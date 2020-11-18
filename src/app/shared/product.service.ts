@@ -9,7 +9,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ProductService {
-  type: 'Phone';
+  type = 'Phone';
+  cardProducts: Product[] = [];
   constructor(private http: HttpClient) {}
 
   create(product) {
@@ -61,5 +62,9 @@ export class ProductService {
 
   setType(type) {
     this.type = type;
+  }
+
+  addProduct(product) {
+    this.cardProducts.push(product);
   }
 }

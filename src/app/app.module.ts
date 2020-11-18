@@ -14,6 +14,7 @@ import { AuthInterceptor } from './shared/auth.interseptor';
 import { ProductComponent } from './product/product.component';
 import { SearchPipe } from './shared/search.pipe';
 import { SortingPipe } from './shared/sorting.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,8 @@ import { SortingPipe } from './shared/sorting.pipe';
     AppRoutingModule,
     CommonModule,
     HttpClientModule,
+    // FormsModule,
+    // ReactiveFormsModule,
     QuillModule.forRoot(),
   ],
   providers: [

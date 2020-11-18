@@ -20,19 +20,6 @@
     </div>
 
     <div class="form-control">
-      <label for="type">Type:</label>
-      <input id="type" type="type" formControlName="type" />
-      <div
-        *ngIf="form.get('type').touched && form.get('type').invalid"
-        class="validation"
-      >
-        <small *ngIf="form.get('type').errors.required"
-          >Please choose product type</small
-        >
-      </div>
-    </div>
-
-    <div class="form-control">
       <label for="title">Name:</label>
       <input id="title" type="title" formControlName="title" />
       <div
