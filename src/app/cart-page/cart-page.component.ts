@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { OrderService } from '../shared/order.service';
 import { ProductService } from '../shared/product.service';
 
 @Component({
@@ -10,15 +11,17 @@ import { ProductService } from '../shared/product.service';
 export class CartPageComponent implements OnInit {
   cartProducts = [];
   totalPrice = 0;
+  added = '';
 
   form: FormGroup;
   submitted = false;
 
-  constructor(private productServ: ProductService) {}
+  constructor(
+    private productServ: ProductService,
+    private orderServ: OrderService
+  ) {}
 
   ngOnInit(): void {
-    console.log(this.productServ.cardProducts);
-
     this.cartProducts = this.productServ.cardProducts;
     for (let i = 0; i < this.cartProducts.length; i++) {
       this.totalPrice += +this.cartProducts[i].price;
@@ -44,13 +47,19 @@ export class CartPageComponent implements OnInit {
       phone: this.form.value.phone,
       address: this.form.value.address,
       payment: this.form.value.payment,
+      orders: this.cartProducts,
       price: this.totalPrice,
       date: new Date(),
     };
 
-    console.log(this.form);
-    // this.productServ.create(product).subscribe((res) => {
-    //   this.form.reset, (this.submitted = false), this.router.navigate(['/']);
-    // });
+    this.orderServ.create(order).subscribe((res) => {
+      this.added = 'Delivery is framed';
+      this.form.reset(), (this.submitted = false);
+    });
+  }
+
+  delete(product) {
+    this.totalPrice -= +product.price;
+    this.cartProducts.splice(this.cartProducts.indexOf(product), 1);
   }
 }

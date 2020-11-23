@@ -6,7 +6,9 @@
           <td>{{ cartProduct.type }}</td>
           <td>{{ cartProduct.title }}</td>
           <td>
-            <button class="btn btn-danger">Delete</button>
+            <button class="btn btn-danger" (click)="delete(cartProduct)">
+              Delete
+            </button>
           </td>
           <td>{{ cartProduct.price }} $</td>
         </tr>
@@ -16,7 +18,9 @@
   <hr />
   <b class="right">Total: {{ totalPrice }} $</b>
 
+  <!-- FORM DELIVERY -->
   <h2 class="text-center">Delivery:</h2>
+  <div *ngIf="added" class="text-center text-danger">{{ added }}</div>
 
   <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="form-control">
@@ -59,8 +63,8 @@
     </div>
 
     <div class="form-control">
-      <label for="type">Payment method</label>
-      <select formControlName="type">
+      <label for="payment">Payment method:</label>
+      <select formControlName="payment">
         <option value="Cash">Cash</option>
         <option value="Card">Card</option>
       </select>
@@ -74,7 +78,6 @@
       Add
     </button>
   </form>
-  <!-----------------  -->
 </div>
 
 <ng-template #empty>

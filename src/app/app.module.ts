@@ -31,8 +31,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     CommonModule,
     HttpClientModule,
-    // FormsModule,
-    // ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
     QuillModule.forRoot(),
   ],
   providers: [

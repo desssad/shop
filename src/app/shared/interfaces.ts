@@ -1,4 +1,5 @@
 export interface FbResponse {
+  [x: string]: any;
   name: string;
 }
 

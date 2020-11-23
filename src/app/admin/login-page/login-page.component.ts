@@ -11,7 +11,6 @@ import { AuthService } from 'src/app/shared/auth.service';
 export class LoginPageComponent implements OnInit {
   form: FormGroup;
   submited = false;
-  // public submitAttempt: boolean = false;
   constructor(public auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
@@ -37,7 +36,6 @@ export class LoginPageComponent implements OnInit {
 
     this.auth.login(user).subscribe(
       (res) => {
-        console.log(res);
         this.form.reset, this.router.navigate(['/admin', 'dashboard']);
         this.submited = false;
       },
